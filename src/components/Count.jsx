@@ -17,11 +17,17 @@ const Count = () => {
       setResult(result - 1)
     }
   }
+
+  const isZero = result === 0
   return (
     <Grid container sx={{alignContent:'center', border: '1px solid rgba(0,0,0,0.1)', padding : '5px' }}>
        <Button variant="contained" sx={{padding : '10px'}} onClick={clickPush}><AddIcon sx={{fontSize: 'medium'}}/></Button>
        <Typography sx={{width : '50px',display: 'flex', justifyContent: 'center', alignItems: 'center' }}>{result}</Typography>
-      <Button variant="outlined" sx={{padding : '10px'}} onClick={clickMinus}><RemoveIcon sx={{fontSize: 'medium'}}/></Button>
+      <Button disabled={isZero} variant="outlined" sx={{padding : '10px', '&.Mui-disabled': {
+            cursor: 'not-allowed',
+            pointerEvents : 'auto',
+            backgroundColor : 'white'
+          }, }} onClick={clickMinus}><RemoveIcon sx={{fontSize: 'medium'}}/></Button>
     </Grid>
   )
 }
